@@ -4,9 +4,31 @@
         border-bottom: 1px solid var(--border-color);
     }
 
+    /* Estilos para os links de navegação */
+    .nav-link-custom {
+        color: var(--text-muted) !important;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.2s ease-in-out;
+        padding: 0.25rem 0.75rem;
+        border-radius: 6px;
+    }
+
+    .nav-link-custom:hover {
+        color: var(--text-main) !important;
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link-custom.active {
+        color: var(--text-main) !important;
+        background-color: rgba(81, 100, 158, 0.15);
+        border: 1px solid rgba(81, 100, 158, 0.3);
+    }
+
     .nav-search-wrapper {
         position: relative;
-        max-width: 240px;
+        max-width: 220px;
         width: 100%;
     }
 
@@ -39,17 +61,23 @@
 
 <nav class="navbar custon-navbar py-3">
     <div class="container d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center gap-4">
-            <a class="navbar-brand fw-bold fs-5 text-white text-decoration-none m-0" href="{% url 'home' %}">
-                <i class="bi bi-terminal-fill me-2" style="color: var(--primary-accent);"></i>
-                Artigos Blog <span style="color: var(--primary-accent);">Django</span>
-            </a>
-            
-            <a href="{% url 'home' %}" class="text-decoration-none fw-semibold small" style="color: var(--primary-accent) !important; transition: color 0.2s;">
-                Artigos
-            </a>
+        
+        <!-- Logo (Esquerda) -->
+        <a class="navbar-brand fw-bold fs-5 text-white text-decoration-none m-0 d-flex align-items-center" href="{% url 'home' %}">
+            <i class="bi bi-terminal-fill me-2" style="color: var(--primary-accent);"></i>
+            Artigos Blog <span style="color: var(--primary-accent); margin-left: 5px;">Django</span>
+        </a>
+        
+        <
+        <div class="d-none d-lg-flex align-items-center gap-2">
+            <a href="{% url 'home' %}" class="nav-link-custom {% if not request.GET.eixo and not request.GET.busca %}active{% endif %}">Todos</a>
+            <a href="?eixo=1" class="nav-link-custom {% if request.GET.eixo == '1' %}active{% endif %}">Python</a>
+            <a href="?busca=IA" class="nav-link-custom {% if request.GET.busca == 'IA' %}active{% endif %}">IA</a>
+            <a href="?eixo=2" class="nav-link-custom {% if request.GET.eixo == '2' %}active{% endif %}">Bancos de Dados</a>
+            <a href="?eixo=3" class="nav-link-custom {% if request.GET.eixo == '3' %}active{% endif %}">Dev Web</a>
         </div>
         
+        <!-- Barra de Pesquisa (Direita) -->
         <form method="GET" action="{% url 'home' %}" class="nav-search-wrapper">
             <i class="bi bi-search nav-search-icon"></i>
             <input type="text" name="busca" class="nav-search-input" placeholder="Buscar..." value="{{ request.GET.busca }}">
