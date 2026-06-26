@@ -19,10 +19,10 @@
               </div>
       
               <h1 class="detail-title" style="color: var(--text-main);">
-                {{ artigo.texto|striptags|truncatewords:10 }}
+                {{ artigo.titulo }}
               </h1>
       
-              <article class="detail-content-area" style="color: #1e293b !important;">
+              <article class="detail-content-area" style="color: var(--text-muted) !important; line-height: 1.8; font-size: 1.1rem;">
                 {{ artigo.texto|safe }}
               </article>
       
@@ -41,4 +41,4 @@
             </div>
           </div>
       </main>
-      {% endblock %}
+{% endblock %}
