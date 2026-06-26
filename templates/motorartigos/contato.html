@@ -1,0 +1,36 @@
+{% extends 'motorartigos/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="p-4 p-md-5 rounded-4" style="background-color: var(--bg-dark); border: 1px solid var(--border-color);">
+            <h2 class="text-white fw-bold mb-4">Entre em contato</h2>
+            <p class="text-muted mb-4">Tem alguma dúvida técnica ou sugestão? Envie uma mensagem e responderemos em breve.</p>
+            
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="text-white small mb-2">Nome</label>
+                    <input type="text" name="nome" class="form-control bg-dark text-white border-secondary" required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-white small mb-2">E-mail</label>
+                    <input type="email" name="email" class="form-control bg-dark text-white border-secondary" required>
+                </div>
+                <div class="mb-3">
+                    <label class="text-white small mb-2">Mensagem</label>
+                    <textarea name="mensagem" rows="5" class="form-control bg-dark text-white border-secondary" required></textarea>
+                </div>
+                <button type="submit" class="btn w-100 fw-bold" style="background-color: var(--primary-accent); color: white;">Enviar Mensagem</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

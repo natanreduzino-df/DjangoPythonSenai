@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Artigo, EixoTecnologia
+from django.contrib import messages
 
 def index(request):
     termo_busca = request.GET.get('busca', '').strip()
@@ -33,3 +34,9 @@ def index(request):
 def artigo(request, id):
     artigo_obj = get_object_or_404(Artigo, id=id)
     return render(request, 'motorartigos/artigo.html', {'artigo': artigo_obj})
+
+def contato(request):
+    if request.method == 'POST':
+        messages.success(request, "Sua mensagem foi enviada com sucesso!")
+        return redirect('contato')
+    return render(request, 'motorartigos/contato.html')
