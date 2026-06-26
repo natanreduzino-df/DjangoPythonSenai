@@ -1,0 +1,20 @@
+/*  
+   SELETOR
+      nome de uma tag html
+      #
+      .
+      <p>    </p>
+      p{
+          color:red;
+      }
+      .preto{
+         color:black;
+      }
+
+*/
+body{
+    background-color:#9c7c7c;    
+}
+h1{
+    color:white;
+}

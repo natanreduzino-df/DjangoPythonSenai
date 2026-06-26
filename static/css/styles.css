@@ -1,0 +1,13 @@
+body {
+    background-color: #fdfeff; /* Azul escuro da meia-noite */
+    color: #000000;            /* Texto principal quase branco */
+    font-family: sans-serif;
+}
+
+h1 {
+    color: #38bdf8;            /* Azul claro neon para destacar o título */
+}
+
+li {
+    color: #94a3b8;            /* Cinza suave para a lista de fundamentos */
+}

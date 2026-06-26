@@ -1,0 +1,43 @@
+{% extends 'motorartigos/base.html'%}
+{% load static %}
+
+    {% block content %}
+
+         <h1>O melhor site de Django, IA e Data Science do Brasil</h1>
+
+        <a href="{% url 'artigo' %}">
+         <img src="{% static 'img/logo-claude.png' %}" alt="logo do claude laranja e branco" width="150px" />
+         <img src="{% static 'img/logo-python.png' %}" alt="logo do python com a nomeclatura do lado" width="150px" />
+         <img src="{% static 'img/logo-langflow.png' %}" alt="logo do langflow em preto e branco" width="150px" />
+         <img src="{% static 'img/logo-hugging.png' %}" alt="logo do hugging face com um emoji feliz" width="150px" />
+         <img src="{% static 'img/logo-maritaca.png' %}" alt="logo do maritaca, um passaro verde" width="150px" />
+         <img src="{% static 'img/logo-MySql.png' %}" alt="logo do mysql com um golfinho em cima" width="150px" />
+        </a>
+
+        <h1>Autores Cadastrados</h1>
+
+        <ul>
+            {% for autor in autores %}
+                <li>
+                    <strong>ID do Autor:</strong>  {{ chave }} <br>
+                    <strong>Nome:</strong>  {{ autor.nome }} <br>
+                    <strong>Biografia:</strong>  {{ autor.biografia }} <br>
+                    <strong>Email:</strong>  {{ autor.email }} <br>
+                </li>
+                {% empty %}
+                    <p>Nenhum autor encontrado.</p>
+                    {% endfor %}
+            </ul>            
+
+                    
+            
+            
+            
+            
+            
+            
+        <ul>
+        
+
+    {%endblock%} 
+

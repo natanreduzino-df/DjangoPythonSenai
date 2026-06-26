@@ -1,0 +1,41 @@
+{% extends 'motorartigos/base.html' %}
+{% load static %}
+
+{% block title %}Página Inicial - Artigos{% endblock %}
+
+{% block content %}
+
+{% if request.resolver_match.url_name == 'home' %}
+<div class="py-5 text-center my-4" style="background: linear-gradient(135deg, #121824 0%, #0b0f19 100%); border: 1px solid var(--border-color); border-radius: 16px;">
+    <h1 class="display-5 fw-bold mb-3">Bem-vindo ao nosso portal de conhecimento</h1>
+    <p class="text-white-50 col-lg-6 mx-auto fs-5">Explore artigos técnicos sobre ecossistema Python, bancos de dados e desenvolvimento web com Django.</p>
+    <a href="{% url 'index' %}" class="btn btn-primary px-4 py-2 mt-2 fw-semibold" style="background-color: var(--primary-accent); border: none;">Ver Todos os Artigos</a>
+</div>
+{% endif %}
+
+<div class="my-4">
+    <h1 class="display-6 fw-bold mb-4">Artigos</h1>
+</div>
+
+<div class="modern-tabs">
+    <a href="/" class="tab-link {% if not request.GET.eixo %}active{% endif %}">Todos</a>
+    <a href="?eixo=1" class="tab-link {% if request.GET.eixo == '1' %}active{% endif %}">Fundamentos Python</a>
+    <a href="?eixo=2" class="tab-link {% if request.GET.eixo == '2' %}active{% endif %}">Bancos de Dados</a>
+    <a href="?eixo=3" class="tab-link {% if request.GET.eixo == '3' %}active{% endif %}">Desenvolvimento Web</a>
+</div>
+
+<section class="artigos-container">
+    <div class="row g-4">
+        {% for artigo in artigos %}
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+                {% include 'motorartigos/partials/_artigo_card.html' %}
+            </div>
+        {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-terminal fs-2 text-muted d-block mb-3"></i>
+                <p class="text-muted">Nenhum artigo encontrado para esta seleção.</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
